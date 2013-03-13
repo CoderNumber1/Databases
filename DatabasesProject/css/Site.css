@@ -1,0 +1,20 @@
+/* 
+    Document   : Site
+    Created on : Mar 12, 2013, 7:07:42 PM
+    Author     : Anthony
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+body{
+    background-color: black;
+}
+
+.container{
+    background-color: white;
+}
+
