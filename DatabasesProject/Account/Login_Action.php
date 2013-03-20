@@ -1,19 +1,23 @@
 <?php
-require_once('../Base.php');
+require_once('/home/gq/gq011/public_html/project/Base.php');
 
-$clientId = $_POST["clientId"];
+$userName = $_POST["userName"];
 $password = $_POST["password"];
 
 //Meaning the fields were either empty or null
-if(strlen($clientId) == 0 || strlen($password) == 0){
-    header('location: login.php?error=true'); //take them back to the page to fix errors.
+if(strlen($userName) == 0 || strlen($password) == 0){
+    header('location: Login.php?error=true'); //take them back to the page to fix errors.
 }
 else{
     //This is where we will need to validate the input against sql.
     
-    $sessionId = md5(uniqid(rand()));
-    Security::LoginSession($sessionId);
-    
-    header('location:'.Config::GetRootUrl());
+    if(Security::Authenticate($userName, $password)){
+        Security::LoginSession($userName);
+
+        header('location:'.Config::GetRootUrl());
+    }
+    else{
+        header("location: Login.php?error=true"); //take them back to the page to fix errors.
+    }
 }
 ?>

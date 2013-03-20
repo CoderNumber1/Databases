@@ -1,15 +1,7 @@
 <?php
-    require('../Smarty.php');
-    require_once('../config.php');
+    require_once('/home/gq/gq011/public_html/project/Base.php');
     $smarty = new ESmarty;
     
-    ini_set('display_errors', true);
-    error_reporting(E_ALL + E_NOTICE);
-    
-//    $smarty->use_sub_dirs = false;
-    $smarty->setTemplateDir(Config::$AppRoot."\\templates");
-    $smarty->assign('URL', Config::GetRootUrl());
-    $smarty->display('Account/login.tpl');
+    $smarty->setTemplateDir('/home/gq/gq011/public_html/project/templates/Account');
+    $smarty->display('Login.tpl');
 ?>
-
-<!--$_SERVER[REQUEST_URI]-->

@@ -1,5 +1,5 @@
 <?php
-    require_once('Base.php');
+    require_once('/home/gq/gq011/public_html/project/Base.php');
     Security::VerifySession();
     
     $smarty = new ESmarty;

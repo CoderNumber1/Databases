@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-03-12 23:21:24
+<?php /* Smarty version Smarty-3.1.13, created on 2013-03-13 12:03:32
          compiled from ".\templates\test.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:32637513eb3e1da9fa1-47627751%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -13,7 +13,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'db9ec6ae0235d6be2b019e5b401c068c7946f654' => 
     array (
       0 => '.\\templates\\_Layout.tpl',
-      1 => 1363152078,
+      1 => 1363197804,
       2 => 'file',
     ),
   ),
@@ -25,7 +25,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_513eb3e1e2afd1_12886800',
   'variables' => 
   array (
+    'BootstrapCssUrl' => 0,
     'SiteCssUrl' => 0,
+    'HasStudentPermissions' => 0,
+    'HasAdminPermissions' => 0,
     'LoggedIn' => 0,
     'UserName' => 0,
     'BaseURL' => 0,
@@ -37,7 +40,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <head>
         <title>Databases</title>
         
-        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="<?php echo $_smarty_tpl->tpl_vars['BootstrapCssUrl']->value;?>
+" rel="stylesheet">
         <link href="<?php echo $_smarty_tpl->tpl_vars['SiteCssUrl']->value;?>
 " rel="stylesheet">
     </head>
@@ -46,6 +50,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <div class="navbar">
                 <div class="navbar-inner">
                     <a class="brand" href="#">Project</a>
+                    
+                    <ul class="nav">
+                        <?php if ($_smarty_tpl->tpl_vars['HasStudentPermissions']->value){?><li><a href='#'>Student</a></li><?php }?>
+                        <?php if ($_smarty_tpl->tpl_vars['HasAdminPermissions']->value){?><li><a href='#'>Admin</a></li><?php }?>
+                    </ul>
 
                     <?php if ($_smarty_tpl->tpl_vars['LoggedIn']->value){?>
                         <p class="pull-right">Welcome: <?php echo $_smarty_tpl->tpl_vars['UserName']->value;?>
