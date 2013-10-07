@@ -73,8 +73,8 @@ class Security{
         //Here we need to associate the sessionId to a user.
         $client = new Client;
         $client->userName = $userName;
-        $client->isStudent = $sqlUser[1] == 1;
-        $client->isAdmin = $sqlUser[0] == 1;
+        $client->isStudent = $sqlUser[0] == 1;
+        $client->isAdmin = $sqlUser[1] == 1;
         $_SESSION['Client'] = $client; //replace this with actual logic.
         
         if($client->isAdmin == 1 && $client->isStudent == 1){

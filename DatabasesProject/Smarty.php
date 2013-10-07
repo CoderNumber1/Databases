@@ -16,6 +16,7 @@ class ESmarty extends Smarty{
         $this->assign('BootstrapCssUrl', Config::GetUrlCss('bootstrap.css'));
         $this->assign('JQueryUrl', Config::GetUrlJS('JQuery.js'));
         $this->assign('BootstrapJsUrl', Config::GetUrlJS('bootstrap.min.js'));
+		$this->assign('PageType', 'None');
         
         $client = Security::GetClient();
         
@@ -23,8 +24,8 @@ class ESmarty extends Smarty{
         
         if($client != null){
             $this->assign('UserName', $client->userName);
-            $this->assign('HasStudentPermissions', $client->isStudent);
-            $this->assign('HasAdminPermissions', $client->isAdmin);
+            $this->assign('HasStudentPermissions', Security::Authorize(PermissionType::Student));
+            $this->assign('HasAdminPermissions', Security::Authorize(PermissionType::Administrator));
             $this->assign('AccessLevel', Security::GetPermissionLevel());
         }
     }

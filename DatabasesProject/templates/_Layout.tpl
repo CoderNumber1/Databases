@@ -15,8 +15,16 @@
                     <a class="brand" href="{$BaseURL}">Project</a>
                     
                     <ul class="nav">
-                        {if $HasStudentPermissions}<li><a href='#'>Student</a></li>{/if}
-                        {if $HasAdminPermissions}<li><a href='{$BaseURL}/Administrator/Administrator.php'>Admin</a></li>{/if}
+                        {if $HasStudentPermissions}<li class="dropdown{if $PageType eq 'Student'}active{/if}">
+							<a id="StudentDropdown" role="button" class="dropdown-toggle" data-toggle="dropdown" href='#'>Student <b class="caret"></b></a>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="StudentDropdown">
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="{$BaseURL}/Student/Student.php">Home</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="{$BaseURL}/Student/StudentCourses.php">Student Courses</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="{$BaseURL}/Student/CourseInfo.php">Course Info</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="{$BaseURL}/Student/Enrollment.php">Enrollment</a></li>
+							</ul>
+						</li>{/if}
+                        {if $HasAdminPermissions}<li {if $PageType eq 'Admin'}class="active"{/if}><a href='{$BaseURL}/Administrator/Administrator.php'>Admin</a></li>{/if}
                     </ul>
 
                     {if $LoggedIn}
